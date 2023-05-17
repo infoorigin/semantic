@@ -1,0 +1,34 @@
+{
+    "table": "dv_cm_onectms_study_site_subject_enrollment",
+    "db": null,
+    "preAggregations": {},
+    "joins": {},
+    "measures": {
+        "patients_screened_count": {
+            "sql": "SUM(subjects_screened_count)",
+            "datatype": "number"
+        },
+        "patients_failed_count": {
+            "sql": "SUM(subjects_screen_failed_count)",
+            "datatype": "number"
+        }
+    },
+    "dimensions": {
+        "study_id": {
+            "sql": "upper(study_id)",
+            "type": "string"
+        },
+        "country": {
+            "sql": "upper(country_iso3_id)",
+            "type": "string"
+        },
+        "active_flag": {
+            "sql": "upper(active_flag)",
+            "type": "string"
+        },
+        "enrollment_record_type": {
+            "sql": "upper(enrollment_record_type_name)",
+            "type": "string"
+        }
+    }
+}

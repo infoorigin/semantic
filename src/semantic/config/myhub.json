@@ -1,0 +1,33 @@
+{
+    "table":"myhubdemandtransposed",
+    "preAggregations": {},
+    "joins": {},
+    "measures": {
+        "CTSGrossOopDollars": {
+            "sql": "ROUND(sum(coalesce(NULLIF(`current thinking snapshot - rounded gross demand group currency`,0),0)),2)",
+            "datatype": "number"
+        },
+        "percent_CTS_to_LCF_TotalGrossDollars": {
+            "sql": "ROUND(coalesce(NULLIF((((sum(`latest cf - rounded total gross dollars`)/ sum(`current thinking snapshot - rounded total gross dollars`))-1)*100),0),0),2)",
+             "type":"number"
+       }
+    },
+    "dimensions": {
+        "idp": {
+            "sql": "`idp`",
+            "datatype": "number"
+        },
+        "year": {
+            "sql": "substring(`time period date`, 7,4)",
+            "type": "string"
+          },
+        "division": {
+            "sql": "upper(`division`)",
+            "datatype": "string"
+        },
+        "projectName": {
+            "sql": "`project name`",
+            "type":"string"
+         }
+    }
+}
